@@ -13,26 +13,33 @@ namespace DataAccess.Concretes
         {
             using var context = new YurtOtomasyonContext();
             context.Add(entity);
+            context.SaveChanges();
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            using var context = new YurtOtomasyonContext();
+            context.Remove(entity);
+            context.SaveChanges();
         }
 
         public List<T> GetAll()
         {
-            throw new NotImplementedException();
+            using var context = new YurtOtomasyonContext();
+            return context.Set<T>().ToList();
         }
 
         public T GetById(int id)
         {
-            throw new NotImplementedException();
+            using var context = new YurtOtomasyonContext();
+            return context.Set<T>().Find(id);
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            using var context = new YurtOtomasyonContext();
+            context.Update(entity);
+            context.SaveChanges();
         }
     }
 }
